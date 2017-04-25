@@ -1,0 +1,1365 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/jonschlinkert/copy"
+
+    >copy (v0.3.0)</a>
+</h1>
+<h4>Copy files or directories using globs.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.copy">module copy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.copy">
+            function <span class="apidocSignatureSpan"></span>copy
+            <span class="apidocSignatureSpan">(patterns, dir, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.each">
+            function <span class="apidocSignatureSpan">copy.</span>each
+            <span class="apidocSignatureSpan">(files, dir, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.one">
+            function <span class="apidocSignatureSpan">copy.</span>one
+            <span class="apidocSignatureSpan">(file, dir, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.recurse">
+            function <span class="apidocSignatureSpan">copy.</span>recurse
+            <span class="apidocSignatureSpan">(cwd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils">
+            function <span class="apidocSignatureSpan">copy.</span>utils
+            <span class="apidocSignatureSpan">(name, alias)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.copy.recurse">module copy.recurse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.recurse.recurse">
+            function <span class="apidocSignatureSpan">copy.</span>recurse
+            <span class="apidocSignatureSpan">(cwd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.recurse.promise">
+            function <span class="apidocSignatureSpan">copy.recurse.</span>promise
+            <span class="apidocSignatureSpan">(dir, files)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.recurse.sync">
+            function <span class="apidocSignatureSpan">copy.recurse.</span>sync
+            <span class="apidocSignatureSpan">(cwd)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.copy.utils">module copy.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.utils">
+            function <span class="apidocSignatureSpan">copy.</span>utils
+            <span class="apidocSignatureSpan">(name, alias)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.Promise">
+            function <span class="apidocSignatureSpan">copy.utils.</span>Promise
+            <span class="apidocSignatureSpan">(executor)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.arrayify">
+            function <span class="apidocSignatureSpan">copy.utils.</span>arrayify
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.contents">
+            function <span class="apidocSignatureSpan">copy.utils.</span>contents
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.each">
+            function <span class="apidocSignatureSpan">copy.utils.</span>each
+            <span class="apidocSignatureSpan">(items, next, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.extend">
+            function <span class="apidocSignatureSpan">copy.utils.</span>extend
+            <span class="apidocSignatureSpan">(o)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.glob">
+            function <span class="apidocSignatureSpan">copy.utils.</span>glob
+            <span class="apidocSignatureSpan">(patterns, config, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.globParent">
+            function <span class="apidocSignatureSpan">copy.utils.</span>globParent
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.hasGlob">
+            function <span class="apidocSignatureSpan">copy.utils.</span>hasGlob
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.isAbsolute">
+            function <span class="apidocSignatureSpan">copy.utils.</span>isAbsolute
+            <span class="apidocSignatureSpan">(fp)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.mkdirp">
+            function <span class="apidocSignatureSpan">copy.utils.</span>mkdirp
+            <span class="apidocSignatureSpan">(p, opts, f, made)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.parent">
+            function <span class="apidocSignatureSpan">copy.utils.</span>parent
+            <span class="apidocSignatureSpan">(patterns)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.resolve">
+            function <span class="apidocSignatureSpan">copy.utils.</span>resolve
+            <span class="apidocSignatureSpan">(dir)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.stat">
+            function <span class="apidocSignatureSpan">copy.utils.</span>stat
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.copy.utils.toFile">
+            function <span class="apidocSignatureSpan">copy.utils.</span>toFile
+            <span class="apidocSignatureSpan">(filepath, pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">copy.utils.</span>fs</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.copy" id="apidoc.module.copy">module copy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.copy.copy" id="apidoc.element.copy.copy">
+        function <span class="apidocSignatureSpan"></span>copy
+        <span class="apidocSignatureSpan">(patterns, dir, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function copy(patterns, dir, options, cb) {
+  if (arguments.length &#x3c; 3) {
+    return invalid.apply(null, arguments);
+  }
+
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options;
+    options = {};
+  }
+
+  var opts = utils.extend({cwd: process.cwd()}, options);
+  opts.cwd = path.resolve(opts.cwd);
+  patterns = utils.arrayify(patterns);
+
+  if (!utils.hasGlob(patterns)) {
+    copyEach(patterns, dir, opts, cb);
+    return;
+  }
+
+  opts.patterns = patterns;
+  if (!opts.srcBase) {
+    opts.srcBase = path.resolve(opts.cwd, utils.parent(patterns));
+  }
+
+  utils.glob(patterns, opts, function(err, files) {
+    if (err) {
+      cb(err);
+      return;
+    }
+
+    copyEach(files, dir, opts, cb);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.each" id="apidoc.element.copy.each">
+        function <span class="apidocSignatureSpan">copy.</span>each
+        <span class="apidocSignatureSpan">(files, dir, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function copyEach(files, dir, options, cb) {
+  if (arguments.length &#x3c; 3) {
+    return invalid.apply(null, arguments);
+  }
+
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options;
+    options = {};
+  }
+
+  var opts = utils.extend({}, options);
+  if (typeof opts.cwd === &#x27;undefined&#x27;) {
+    opts.cwd = process.cwd();
+  }
+
+  if (!opts.srcBase &#x26;&#x26; opts.patterns) {
+    opts.srcBase = path.resolve(opts.cwd, utils.parent(opts.patterns));
+  }
+
+  utils.each(files, function(filename, next) {
+    var filepath = path.resolve(opts.cwd, filename);
+    copyOne(filepath, dir, opts, next);
+  }, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+/**
+* Copy an array of files to the given destination `directory`, with
+* `options` and callback function that exposes `err` and the array of
+* vinyl files that are created by the copy operation.
+*
+* ```js
+* copy.<span class="apidocCodeKeywordSpan">each</span>([&#x27;foo.txt&#x27;, &#x27;bar.txt&#x27;, &#x27;baz.txt&#x27;], &#x27;dist
+&#x27;, function(err, files) {
+*   // exposes the vinyl `files` created when the files are copied
+* });
+* ```
+* @name .copy.each
+* @param {Array} `files` Filepaths or vinyl files.
+* @param {String} `dir` Destination directory
+* @param {Object|Function} `options` or callback function
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.one" id="apidoc.element.copy.one">
+        function <span class="apidocSignatureSpan">copy.</span>one
+        <span class="apidocSignatureSpan">(file, dir, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function copyOne(file, dir, options, cb) {
+  if (arguments.length &#x3c; 3) {
+    return invalid.apply(null, arguments);
+  }
+
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options;
+    options = {};
+  }
+
+  var opts = utils.extend({}, options);
+  if (typeof opts.cwd === &#x27;undefined&#x27;) {
+    opts.cwd = process.cwd();
+  }
+  if (typeof file === &#x27;string&#x27;) {
+    file = path.resolve(opts.cwd, file);
+  }
+
+  if (!opts.srcBase &#x26;&#x26; opts.patterns) {
+    opts.srcBase = path.resolve(opts.cwd, utils.parent(opts.patterns));
+  }
+
+  toDest(dir, file, opts, function(err, out) {
+    if (err) {
+      cb(err);
+      return;
+    }
+
+    base(file, out.path, opts, function(err) {
+      if (err) {
+        cb(err);
+        return;
+      }
+
+      cb(null, out);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+/**
+* Copy a single `file` to the given `dest` directory, using
+* the specified options and callback function.
+*
+* ```js
+* copy.<span class="apidocCodeKeywordSpan">one</span>(&#x27;foo.txt&#x27;, &#x27;dist&#x27;, function(err, file) {
+*   if (err) throw err;
+*   // exposes the vinyl `file` that is created when the file is copied
+* });
+* ```
+* @name .copy.one
+* @param {String|Object} `file` Filepath or vinyl file
+* @param {String} `dir` Destination directory
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.recurse" id="apidoc.element.copy.recurse">
+        function <span class="apidocSignatureSpan">copy.</span>recurse
+        <span class="apidocSignatureSpan">(cwd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function recurse(cwd, callback) {
+  var arr = [];
+
+  function lookup(dir, cb) {
+    var file = { path: dir, cwd: dir };
+
+    utils.contents.async(file, function(err, res) {
+      if (err) {
+        cb(err);
+        return;
+      }
+
+      arr.push(res);
+
+      if (res.stat === null) {
+        // temporary. errors are currently silenced in file-stat,
+        // once that&#x27;s updated we&#x27;ll remove this
+        try {
+          utils.fs.readdirSync(res.path);
+        } catch (err) {
+          cb(err);
+          return;
+        }
+      } else if (res.stat &#x26;&#x26; res.stat.isDirectory()) {
+        utils.fs.readdir(res.path, function(err, files) {
+          if (err) {
+            cb(err);
+            return;
+          }
+
+          res.files = files;
+          utils.each(files, function(filename, next) {
+            lookup(path.join(dir, filename), next);
+          }, cb);
+        });
+      } else {
+        cb();
+      }
+    });
+  }
+
+  lookup(cwd, function(err) {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null, arr);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils" id="apidoc.element.copy.utils">
+        function <span class="apidocSignatureSpan">copy.</span>utils
+        <span class="apidocSignatureSpan">(name, alias)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function proxy(name, alias) {
+  var key = alias;
+
+  // camel-case the module `name` if `alias` is not defined
+  if (typeof key !== &#x27;string&#x27;) {
+    key = camelcase(name);
+  }
+
+  // create a getter to lazily invoke the module the first time it&#x27;s called
+  function getter() {
+    return cache[key] || (cache[key] = requireFn(name));
+  }
+
+  // trip the getter if `process.env.UNLAZY` is defined
+  if (unlazy(process.env)) {
+    getter();
+  }
+
+  set(proxy, key, getter);
+  return getter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.copy.recurse" id="apidoc.module.copy.recurse">module copy.recurse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.copy.recurse.recurse" id="apidoc.element.copy.recurse.recurse">
+        function <span class="apidocSignatureSpan">copy.</span>recurse
+        <span class="apidocSignatureSpan">(cwd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function recurse(cwd, callback) {
+  var arr = [];
+
+  function lookup(dir, cb) {
+    var file = { path: dir, cwd: dir };
+
+    utils.contents.async(file, function(err, res) {
+      if (err) {
+        cb(err);
+        return;
+      }
+
+      arr.push(res);
+
+      if (res.stat === null) {
+        // temporary. errors are currently silenced in file-stat,
+        // once that&#x27;s updated we&#x27;ll remove this
+        try {
+          utils.fs.readdirSync(res.path);
+        } catch (err) {
+          cb(err);
+          return;
+        }
+      } else if (res.stat &#x26;&#x26; res.stat.isDirectory()) {
+        utils.fs.readdir(res.path, function(err, files) {
+          if (err) {
+            cb(err);
+            return;
+          }
+
+          res.files = files;
+          utils.each(files, function(filename, next) {
+            lookup(path.join(dir, filename), next);
+          }, cb);
+        });
+      } else {
+        cb();
+      }
+    });
+  }
+
+  lookup(cwd, function(err) {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null, arr);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.recurse.promise" id="apidoc.element.copy.recurse.promise">
+        function <span class="apidocSignatureSpan">copy.recurse.</span>promise
+        <span class="apidocSignatureSpan">(dir, files)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">promise = function (dir, files) {
+  files = files || [];
+
+  var readdir = utils.Promise.promisify(utils.fs.readdir);
+  return readdir(dir)
+    .reduce(function(acc, filename) {
+      var filepath = path.join(dir, filename);
+      var file = { path: filepath, cwd: dir};
+      utils.contents.sync(file);
+
+      if (file.stat &#x26;&#x26; file.stat.isDirectory()) {
+        return recurse.promise(file.path, acc);
+      }
+      return acc.concat(file);
+    }, files);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ return readdir(dir)
+   .reduce(function(acc, filename) {
+     var filepath = path.join(dir, filename);
+     var file = { path: filepath, cwd: dir};
+     utils.contents.sync(file);
+
+     if (file.stat &#x26;&#x26; file.stat.isDirectory()) {
+       return recurse.<span class="apidocCodeKeywordSpan">promise</span>(file.path, acc);
+     }
+     return acc.concat(file);
+   }, files);
+};
+
+/**
+* Expose `recurse`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.recurse.sync" id="apidoc.element.copy.recurse.sync">
+        function <span class="apidocSignatureSpan">copy.recurse.</span>sync
+        <span class="apidocSignatureSpan">(cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sync = function (cwd) {
+  var files = [];
+
+  function lookup(dir) {
+    var file = { path: dir, cwd: dir };
+
+    utils.contents.sync(file);
+    files.push(file);
+
+    if (file.stat &#x26;&#x26; file.stat.isDirectory()) {
+      file.files = utils.fs.readdirSync(file.path);
+      for (var i = 0; i &#x3c; file.files.length; i++) {
+        lookup(path.join(dir, file.files[i]));
+      }
+    }
+  }
+  lookup(cwd);
+  return files;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+recurse.sync = function(cwd) {
+  var files = [];
+
+  function lookup(dir) {
+var file = { path: dir, cwd: dir };
+
+utils.contents.<span class="apidocCodeKeywordSpan">sync</span>(file);
+files.push(file);
+
+if (file.stat &#x26;&#x26; file.stat.isDirectory()) {
+  file.files = utils.fs.readdirSync(file.path);
+  for (var i = 0; i &#x3c; file.files.length; i++) {
+    lookup(path.join(dir, file.files[i]));
+  }
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.copy.utils" id="apidoc.module.copy.utils">module copy.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.utils" id="apidoc.element.copy.utils.utils">
+        function <span class="apidocSignatureSpan">copy.</span>utils
+        <span class="apidocSignatureSpan">(name, alias)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function proxy(name, alias) {
+  var key = alias;
+
+  // camel-case the module `name` if `alias` is not defined
+  if (typeof key !== &#x27;string&#x27;) {
+    key = camelcase(name);
+  }
+
+  // create a getter to lazily invoke the module the first time it&#x27;s called
+  function getter() {
+    return cache[key] || (cache[key] = requireFn(name));
+  }
+
+  // trip the getter if `process.env.UNLAZY` is defined
+  if (unlazy(process.env)) {
+    getter();
+  }
+
+  set(proxy, key, getter);
+  return getter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.Promise" id="apidoc.element.copy.utils.Promise">
+        function <span class="apidocSignatureSpan">copy.utils.</span>Promise
+        <span class="apidocSignatureSpan">(executor)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise(executor) {
+    if (executor !== INTERNAL) {
+        check(this, executor);
+    }
+    this._bitField = 0;
+    this._fulfillmentHandler0 = undefined;
+    this._rejectionHandler0 = undefined;
+    this._promise0 = undefined;
+    this._receiver0 = undefined;
+    this._resolveFromExecutor(executor);
+    this._promiseCreated();
+    this._fireEvent(&#x22;promiseCreated&#x22;, this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.arrayify" id="apidoc.element.copy.utils.arrayify">
+        function <span class="apidocSignatureSpan">copy.utils.</span>arrayify
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arrayify = function (val) {
+  return val ? (Array.isArray(val) ? val : [val]) : [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof options === &#x27;function&#x27;) {
+  cb = options;
+  options = {};
+}
+
+var opts = utils.extend({cwd: process.cwd()}, options);
+opts.cwd = path.resolve(opts.cwd);
+patterns = utils.<span class="apidocCodeKeywordSpan">arrayify</span>(patterns);
+
+if (!utils.hasGlob(patterns)) {
+  copyEach(patterns, dir, opts, cb);
+  return;
+}
+
+opts.patterns = patterns;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.contents" id="apidoc.element.copy.utils.contents">
+        function <span class="apidocSignatureSpan">copy.utils.</span>contents
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fileContents(options) {
+  return utils.through.obj(function(file, enc, cb) {
+    async(file, options, function(err, res) {
+      if (err) {
+        cb(err);
+        return;
+      }
+      cb(null, res);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.each" id="apidoc.element.copy.utils.each">
+        function <span class="apidocSignatureSpan">copy.utils.</span>each
+        <span class="apidocSignatureSpan">(items, next, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">each = function (items, next, callback) {
+  if (!Array.isArray(items)) throw new TypeError(&#x27;each() expects array as first argument&#x27;);
+  if (typeof next !== &#x27;function&#x27;) throw new TypeError(&#x27;each() expects function as second argument&#x27;);
+  if (typeof callback !== &#x27;function&#x27;) callback = Function.prototype; // no-op
+
+  if (items.length === 0) return callback(undefined, items);
+
+  var transformed = new Array(items.length);
+  var count = 0;
+  var returned = false;
+
+  items.forEach(function(item, index) {
+    next(item, function(error, transformedItem) {
+      if (returned) return;
+      if (error) {
+        returned = true;
+        return callback(error);
+      }
+      transformed[index] = transformedItem;
+      count += 1;
+      if (count === items.length) return callback(undefined, transformed);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+/**
+* Copy an array of files to the given destination `directory`, with
+* `options` and callback function that exposes `err` and the array of
+* vinyl files that are created by the copy operation.
+*
+* ```js
+* copy.<span class="apidocCodeKeywordSpan">each</span>([&#x27;foo.txt&#x27;, &#x27;bar.txt&#x27;, &#x27;baz.txt&#x27;], &#x27;dist
+&#x27;, function(err, files) {
+*   // exposes the vinyl `files` created when the files are copied
+* });
+* ```
+* @name .copy.each
+* @param {Array} `files` Filepaths or vinyl files.
+* @param {String} `dir` Destination directory
+* @param {Object|Function} `options` or callback function
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.extend" id="apidoc.element.copy.utils.extend">
+        function <span class="apidocSignatureSpan">copy.utils.</span>extend
+        <span class="apidocSignatureSpan">(o)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function extend(o) {
+  if (!isObject(o)) { o = {}; }
+
+  var len = arguments.length;
+  for (var i = 1; i &#x3c; len; i++) {
+    var obj = arguments[i];
+
+    if (isObject(obj)) {
+      assign(o, obj);
+    }
+  }
+  return o;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+if (typeof options === &#x27;function&#x27;) {
+  cb = options;
+  options = {};
+}
+
+var opts = utils.<span class="apidocCodeKeywordSpan">extend</span>({cwd: process.cwd()}, options);
+opts.cwd = path.resolve(opts.cwd);
+patterns = utils.arrayify(patterns);
+
+if (!utils.hasGlob(patterns)) {
+  copyEach(patterns, dir, opts, cb);
+  return;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.glob" id="apidoc.element.copy.utils.glob">
+        function <span class="apidocSignatureSpan">copy.utils.</span>glob
+        <span class="apidocSignatureSpan">(patterns, config, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">glob = function (patterns, config, cb) {
+  if (typeof config === &#x27;function&#x27;) {
+    cb = config;
+    config = {};
+  }
+
+  if (typeof cb !== &#x27;function&#x27;) {
+    throw new Error(&#x27;expected a callback function.&#x27;);
+  }
+
+  if (!utils.isValidGlob(patterns)) {
+    cb(new Error(&#x27;invalid glob pattern: &#x27; + patterns));
+    return;
+  }
+
+  // shallow clone options
+  var options = utils.extend({cwd: &#x27;&#x27;}, config);
+  options.cwd = utils.cwd(options);
+
+  patterns = utils.arrayify(patterns);
+  if (!utils.hasGlob(patterns)) {
+    patterns = utils.getPaths(patterns, options);
+    cb(null, patterns);
+    return;
+  }
+
+  var sifted = utils.sift(patterns, options);
+  var Glob = utils.glob.Glob;
+  var cache = [];
+  var glob;
+
+  function updateOptions(inclusive) {
+    return utils.setIgnores(options, sifted.excludes, inclusive.index);
+  }
+
+  utils.reduce(sifted.includes, [], function(acc, include, next) {
+    var opts = updateOptions(include);
+    if (acc.glob) {
+      opts.cache = acc.glob.cache;
+    }
+
+    glob = new Glob(include.pattern, opts, function(err, files) {
+      if (err) {
+        next(err);
+        return;
+      }
+
+      cache.push(glob.cache);
+      acc = acc.concat(files);
+      acc.glob = glob;
+      next(null, acc);
+    });
+  }, function(err, files) {
+    if (err) {
+      cb(err);
+      return;
+    }
+
+    Object.defineProperty(files, &#x27;cache&#x27;, {
+      configurable: true,
+      get: function() {
+        return utils.createCache(cache);
+      }
+    });
+
+    delete files.glob;
+    cb(null, files);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+opts.patterns = patterns;
+if (!opts.srcBase) {
+  opts.srcBase = path.resolve(opts.cwd, utils.parent(patterns));
+}
+
+utils.<span class="apidocCodeKeywordSpan">glob</span>(patterns, opts, function(err, files) {
+  if (err) {
+    cb(err);
+    return;
+  }
+
+  copyEach(files, dir, opts, cb);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.globParent" id="apidoc.element.copy.utils.globParent">
+        function <span class="apidocSignatureSpan">copy.utils.</span>globParent
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function globParent(str) {
+	str += &#x27;a&#x27;; // preserves full path in case of trailing path separator
+	do {str = path.dirname(str)} while (isglob(str));
+	return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*
+* @param {Array|String} `patterns`
+* @return {String}
+*/
+
+utils.parent = function(patterns) {
+ if (Array.isArray(patterns)) {
+   return utils.<span class="apidocCodeKeywordSpan">globParent</span>(patterns[0]);
+ }
+ return utils.globParent(patterns);
+};
+
+/**
+* Cast `val` to an array.
+*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.hasGlob" id="apidoc.element.copy.utils.hasGlob">
+        function <span class="apidocSignatureSpan">copy.utils.</span>hasGlob
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hasGlob(val) {
+  if (val == null) return false;
+  if (typeof val === &#x27;string&#x27;) {
+    return isGlob(val);
+  }
+  if (Array.isArray(val)) {
+    var len = val.length;
+    while (len--) {
+      if (isGlob(val[len])) {
+        return true;
+      }
+    }
+  }
+  return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  options = {};
+}
+
+var opts = utils.extend({cwd: process.cwd()}, options);
+opts.cwd = path.resolve(opts.cwd);
+patterns = utils.arrayify(patterns);
+
+if (!utils.<span class="apidocCodeKeywordSpan">hasGlob</span>(patterns)) {
+  copyEach(patterns, dir, opts, cb);
+  return;
+}
+
+opts.patterns = patterns;
+if (!opts.srcBase) {
+  opts.srcBase = path.resolve(opts.cwd, utils.parent(patterns));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.isAbsolute" id="apidoc.element.copy.utils.isAbsolute">
+        function <span class="apidocSignatureSpan">copy.utils.</span>isAbsolute
+        <span class="apidocSignatureSpan">(fp)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isAbsolute(fp) {
+  if (typeof fp !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;isAbsolute expects a string.&#x27;);
+  }
+  return isWindows() ? isAbsolute.win32(fp) : isAbsolute.posix(fp);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (opts.srcBase) {
+  file.base = path.resolve(file.cwd, opts.srcBase);
+  file.path = path.resolve(file.base, file.relative);
+}
+
+if (opts.destBase) {
+  destDir = path.resolve(opts.destBase, destDir);
+} else if (utils.<span class="apidocCodeKeywordSpan">isAbsolute</span>(destDir)) {
+  destDir = path.resolve(opts.cwd, path.resolve(destDir));
+} else {
+  destDir = path.join(opts.cwd, destDir);
+}
+
+// update file path with destination directory
+if (opts.flatten === true || typeof file.path === &#x27;undefined&#x27;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.mkdirp" id="apidoc.element.copy.utils.mkdirp">
+        function <span class="apidocSignatureSpan">copy.utils.</span>mkdirp
+        <span class="apidocSignatureSpan">(p, opts, f, made)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function mkdirP(p, opts, f, made) {
+    if (typeof opts === &#x27;function&#x27;) {
+        f = opts;
+        opts = {};
+    }
+    else if (!opts || typeof opts !== &#x27;object&#x27;) {
+        opts = { mode: opts };
+    }
+
+    var mode = opts.mode;
+    var xfs = opts.fs || fs;
+
+    if (mode === undefined) {
+        mode = _0777 &#x26; (~process.umask());
+    }
+    if (!made) made = null;
+
+    var cb = f || function () {};
+    p = path.resolve(p);
+
+    xfs.mkdir(p, mode, function (er) {
+        if (!er) {
+            made = made || p;
+            return cb(null, made);
+        }
+        switch (er.code) {
+            case &#x27;ENOENT&#x27;:
+                mkdirP(path.dirname(p), opts, function (er, made) {
+                    if (er) cb(er, made);
+                    else mkdirP(p, opts, cb, made);
+                });
+                break;
+
+            // In the case of any other error, just see if there&#x27;s a dir
+            // there already.  If so, then hooray!  If not, then something
+            // is borked.
+            default:
+                xfs.stat(p, function (er2, stat) {
+                    // if the stat fails, then that&#x27;s super weird.
+                    // let the original error be the failure reason.
+                    if (er2 || !stat.isDirectory()) cb(er, made)
+                    else cb(null, made);
+                });
+                break;
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {String} `dest`
+ * @param {Function} `cb` Callback function
+ */
+
+function mkdir(dest, cb) {
+  var dir = path.dirname(path.resolve(dest));
+  utils.<span class="apidocCodeKeywordSpan">mkdirp</span>(dir, function(err) {
+    if (err &#x26;&#x26; err.code !== &#x27;EEXIST&#x27;) {
+      err.message = formatError(&#x27;mkdirp cannot create directory&#x27;, dir, err);
+      return cb(new Error(err));
+    }
+    cb();
+  });
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.parent" id="apidoc.element.copy.utils.parent">
+        function <span class="apidocSignatureSpan">copy.utils.</span>parent
+        <span class="apidocSignatureSpan">(patterns)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parent = function (patterns) {
+  if (Array.isArray(patterns)) {
+    return utils.globParent(patterns[0]);
+  }
+  return utils.globParent(patterns);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (!utils.hasGlob(patterns)) {
+  copyEach(patterns, dir, opts, cb);
+  return;
+}
+
+opts.patterns = patterns;
+if (!opts.srcBase) {
+  opts.srcBase = path.resolve(opts.cwd, utils.<span class="apidocCodeKeywordSpan">parent</span>(patterns));
+}
+
+utils.glob(patterns, opts, function(err, files) {
+  if (err) {
+    cb(err);
+    return;
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.resolve" id="apidoc.element.copy.utils.resolve">
+        function <span class="apidocSignatureSpan">copy.utils.</span>resolve
+        <span class="apidocSignatureSpan">(dir)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function resolveDir(dir) {
+  if (dir.charAt(0) === &#x27;~&#x27;) {
+    dir = expand(dir);
+  }
+  if (dir.charAt(0) === &#x27;@&#x27;) {
+    dir = path.join(gm, dir.slice(1));
+  }
+  return dir;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (typeof options === &#x27;function&#x27;) {
+  cb = options;
+  options = {};
+}
+
+var opts = utils.extend({cwd: process.cwd()}, options);
+opts.cwd = path.<span class="apidocCodeKeywordSpan">resolve</span>(opts.cwd);
+patterns = utils.arrayify(patterns);
+
+if (!utils.hasGlob(patterns)) {
+  copyEach(patterns, dir, opts, cb);
+  return;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.stat" id="apidoc.element.copy.utils.stat">
+        function <span class="apidocSignatureSpan">copy.utils.</span>stat
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stat = function (file) {
+  try {
+    return fs.lstatSync(file.path);
+  } catch (err) {}
+  return {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.copy.utils.toFile" id="apidoc.element.copy.utils.toFile">
+        function <span class="apidocSignatureSpan">copy.utils.</span>toFile
+        <span class="apidocSignatureSpan">(filepath, pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toFile(filepath, pattern, options) {
+  var isPattern = utils.isValidGlob(pattern);
+  if (!isPattern) {
+    options = pattern;
+    pattern = null;
+  }
+  var opts = utils.extend({}, options);
+  var obj = { contents: null };
+
+  obj.cwd = path.resolve(opts.cwd || process.cwd());
+  obj.path = path.resolve(obj.cwd, filepath);
+
+  if (isPattern) {
+    if (Array.isArray(pattern)) {
+      pattern = pattern[0];
+    }
+    obj.base = path.resolve(obj.cwd, utils.parent(pattern));
+  } else {
+    obj.base = path.resolve(opts.base || obj.cwd);
+  }
+
+  var File = typeof opts.File === &#x27;function&#x27; ? opts.File : utils.File;
+  var file = new File(obj);
+  file.options = opts;
+
+  if (opts.file) {
+    for (var key in opts.file) {
+      file[key] = opts.file[key];
+    }
+    delete opts.file;
+  }
+
+  if (!file.stat) {
+    file.stat = opts.stat || stats(file);
+    delete opts.stat;
+  }
+
+  contents(file, opts);
+  return file;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  cb = options;
+  options = {};
+}
+
+var opts = utils.extend({overwrite: true}, options);
+opts.cwd = path.resolve(utils.resolve(opts.cwd || &#x27;.&#x27;));
+if (typeof file === &#x27;string&#x27;) {
+  file = utils.<span class="apidocCodeKeywordSpan">toFile</span>(file, opts);
+}
+
+var destDir;
+if (typeof dir === &#x27;function&#x27;) {
+  destDir = dir(file);
+
+} else if (typeof dir === &#x27;string&#x27;) {
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
